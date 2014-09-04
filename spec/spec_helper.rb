@@ -5,6 +5,8 @@
 
 require_relative '../twitter.rb'
 
+require 'base64'
+
 RSpec.configure do |config|
   config.tty = true
   config.order = 'default'

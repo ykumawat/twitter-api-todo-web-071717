@@ -1,14 +1,14 @@
 ---
-tags: todo, api, json, twitter
+tags: todo, api, twitter
 language: ruby
-resources: 3
+resources: 1
 ---
 
 # Twitter API Todo
 
 ## Objective
 
-Get more familiar with using APIs and their JSON contents in Ruby.
+Get more familiar with using APIs, in this case the Twitter API, in Ruby.
 
 ## Introduction
 
@@ -20,10 +20,5 @@ Scraping sites is one way to get data but many times, companies will expose more
 * If you're unsure how to format your keys in the YAML file, see the following [resource](http://docs.ansible.com/YAMLSyntax.html).
 * If you get stuck, refer to the [docs](https://dev.twitter.com/docs/api/1.1).
 
-## Bonus
-* Make a command line app that interacts with the API.
-
 ## Resources
-* [StackOverflow](http://stackoverflow.com/) - [JSON.load](http://stackoverflow.com/questions/18581792/ruby-on-rails-and-json-parser-from-url?answertab=votes#tab-top)
-* [RubyDocs](http://www.ruby-doc.org/) - [JSON Load Method](http://www.ruby-doc.org/stdlib-2.0.0/libdoc/json/rdoc/JSON.html#method-i-load)
 * [Twitter](https://dev.twitter.com/)
