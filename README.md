@@ -1,9 +1,3 @@
----
-tags: todo, api, twitter
-language: ruby
-resources: 1
----
-
 # Twitter API Todo
 
 ## Objective
