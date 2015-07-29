@@ -15,7 +15,7 @@ class TwitterApi
     end
   end
 
-  def most_recent_follower
+  def most_recent_friend
     # find the Twitter gem method that accomplishes this!
   end
 
