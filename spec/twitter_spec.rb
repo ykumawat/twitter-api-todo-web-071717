@@ -21,9 +21,10 @@ describe TwitterApi do
     end
   end
 
-  describe '#most_recent_friend' do
+  describe '#most_recent_follower' do
+    # should use client.friends, not client.followers
     it 'returns the most your most recent Twitter follower' do
-      expect(client.most_recent_friend).to eq(SpecTwitterApi.new.most_recent_friend)
+      expect(client.most_recent_follower).to eq(SpecTwitterApi.new.most_recent_follower)
     end
   end
 
