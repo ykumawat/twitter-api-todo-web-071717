@@ -3,7 +3,7 @@
 ## Objectives
 
 1. Practice working with APIs.
-2. Use a Ruby Gem to interact with an API
+2. Use a Ruby Gem to interact with an API.
 
 ## Introduction
 
@@ -15,7 +15,9 @@ Many popular APIs, such as the Twitter API, are accompanied by Ruby gems! API ge
 
 ### Using the `application.yml` file
 
-In this lab, you'll be storing your API keys in an `application.yml` file. Once we learn about developing applications for the web, you'll get into the habit of storing data that should be available across your applications files in environment variables in YAML files. Don't worry about this for now. 
+In this lab, you'll be storing your API keys in an `application.yml` file. Once we learn about developing applications for the web, you'll get into the habit of storing data that should be available across your applications files in environment variables in YAML files. Another benefit of storing data like API keys and secrets in a separate a file is to protect them from scary internet users. If we keep our keys in a separate file and add that file to our `.gitignore` file, that file *won't be pushed up to Github* and our secret keys and passwords will be safe from hackers!
+
+**Top Tip:** A **`.gitignore`* file is a manifest of files that you don't want to push up to Github. To tell prevent certain files from being pushed up to Github, simply add them to a `.gitignore` file. 
 
 ## Instructions
 
@@ -31,11 +33,29 @@ CONSUMER_KEY: your consumer token!
 CONSUMER_SECRET: your consumer secret!
 ```
 
-3. Add your Twitter username inside of the string on line 7 inside of `spec/twitter_spec.rb`.
+3. Add your Twitter username (or any legit twitter handle) inside of the string on line 7 inside of `spec/twitter_spec.rb`.
 4. Now we're ready to fire up our Twitter gem. 
   * Notice that the gem is being required at the top of the `twitter.rb` file with the `require 'twitter'` line. 
   * Now that you have your API keys and tokens, the code below will handle your connection to the Twitter API via the client. The client handles the authentication aspect of requesting data from the API––it will make the appropriate request for us, depending on what data we want from the API, and, because it already contains our keys and secrets, it will authenticate us with the API. 
-  * Fill out the methods in the `twitter.rb` to use the approprate Twitter gem methods. The Twitter gem includes methods to handle common actions like finding a particular user's followers. Use the [documentation](https://github.com/sferik/twitter) for the Twitter gem, or refer to the [API docs](https://dev.twitter.com/docs/api/1.1) if its unclear what the Twitter gem commands are doing. This lab is test-driven, so use the spec file and the above resources to get the tests passing. 
+  * Fill out the methods in the `twitter.rb` to use the approprate Twitter gem methods. The Twitter gem includes methods to handle common actions like finding a particular user's followers. 
+  * Let's go through one example together: Now that you've configered your client, you'll notice that there is an `attr_accessor` method, `client`. Since, as we discussed, the client handles our authentication with the Twitter API, any subsequent Twitter gem methods will need to be called on `client`. 
+  * Let's take a look at the example method below: 
+
+  ```ruby
+  # hypothetical method in twitter.rb
+
+  def get_friends
+  end
+  ```
+
+  * According to the [documentation](https://github.com/sferik/twitter) for the Twitter gem, there is a method, `.friends`, that we can call on our configered client (stored in the `client` getter method). Thus, we can request a list of the client's friends from the Twitter API like this: 
+
+  ```ruby
+  def get_friends
+    client.friends
+  end
+  ```
+  * To get these tests passing, use the example above and the [documentation](https://github.com/sferik/twitter) for the Twitter gem, or refer to the [API docs](https://dev.twitter.com/docs/api/1.1) if its unclear what the Twitter gem commands are doing. This lab is test-driven, so use the spec file and the above resources to get the tests passing. This lab is designed to help you get comfortable navigating the documentation of an API gem. So, don't get frustrated if you don't know the gem methods you need to employ for each test. We haven't taught them to you! Instead, we are letting you know the desired *behavior*, and you are using the gem's documentation to help you find the right tools. 
 
 ### Bonus
 

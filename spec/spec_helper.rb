@@ -4,10 +4,32 @@
 # file to always be loaded, without a need to explicitly require it in any files.
 
 require_relative '../twitter.rb'
+require_relative './support/vcr_setup.rb'
 
 require 'base64'
+
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
+
+VCR.configure do |c|
+  #the directory where your cassettes will be saved
+  c.cassette_library_dir = 'spec/vcr'
+  # your HTTP request service. You can also use fakeweb, webmock, and more
+  c.hook_into :webmock
+end
 
 RSpec.configure do |config|
   config.tty = true
   config.order = 'default'
 end
+
+# {client: {
+#    access_token: "2911734821-Grm2qtLudgA8C9G2N5NeqNP74Q8Cdg4zgzGr02H",
+#    access_token_secret: "VZhz85cAJx8XZv6xxRZ0sO0ZfDsxyZS5dQJRvaKHKZFbH",
+#    consumer_key: "qa7msp88pvNI7GeSECqQPnK16",
+#    consumer_secret: "mBYW0ndkApqtW0dQiUdklPdWN9EvD614PvzHZRjQaldgIUjOR6"
+#  }
+# }
+
+
+# body: [{"name" => "Repo 1", "html_url" => "http://link1.com"}, {"name" => "Repo 2", "html_url" => "http://link2.com"}, {"name" => "Repo 3", "html_url" => "http://link3.com"}].to_json

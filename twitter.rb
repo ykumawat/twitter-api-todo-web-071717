@@ -1,13 +1,11 @@
 require 'twitter'
 require 'yaml'
-require 'pry'
 
 class TwitterApi
   attr_reader :client
 
   def initialize
     keys = YAML.load_file('application.yml')
-    # binding.pry
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = keys['CONSUMER_KEY']
       config.consumer_secret     = keys['CONSUMER_SECRET']
@@ -16,7 +14,7 @@ class TwitterApi
     end
   end
 
-  def most_recent_follower
+  def most_recent_friend
     client.friends.first
   end
 
@@ -33,12 +31,12 @@ class TwitterApi
   end
 end
 
-#Bonus: 
+# #Bonus: 
 
-#uncomment out the following and read the bonus instructions
+# #uncomment out the following and read the bonus instructions
 
-# tweet_client = TwitterApi.new
-# puts tweet_client.most_recent_follower
-# puts tweet_client.find_user_for("sm_debenedetto")
-# puts tweet_client.find_followers_for("sm_debenedetto")
+# # tweet_client = TwitterApi.new
+# puts tweet_client.most_recent_friend
+# puts tweet_client.find_user_for("USERNAME HERE")
+# puts tweet_client.find_followers_for("USERNAME HERE")
 # puts tweet_client.homepage_timeline
