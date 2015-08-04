@@ -29,9 +29,7 @@ class TwitterApi
   end
 
   def homepage_timeline
-    client.home_timeline.collect do |tweet|
-      tweet.text
-    end
+    client.home_timeline
   end
 end
 
