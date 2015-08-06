@@ -10,6 +10,7 @@ describe TwitterApi do
       VCR.use_cassette('twitter/most_recent_friend') do
         user = client.most_recent_friend
         expect(user.class).to eq(Twitter::User)
+        expect(user.name).to eq("Forrest Chang")
       end
     end
   end
@@ -17,9 +18,9 @@ describe TwitterApi do
   describe "#find_user_for" do 
     it "given a username, it returns the user object" do 
       VCR.use_cassette('twitter/find_user_for') do
-        user = client.find_user_for("USERNAME HERE")
+        user = client.find_user_for("sm_debenedetto")
         expect(user.class).to eq(Twitter::User)
-        expect(user.username).to eq("USERNAME HERE") 
+        expect(user.username).to eq("sm_debenedetto") 
       end
     end
   end
@@ -27,9 +28,10 @@ describe TwitterApi do
   describe "#find_followers_for" do 
     it "given a username, it returns that user's followers" do 
       VCR.use_cassette('twitter/find_followers_for') do
-        user = client.find_followers_for("USERNAME HERE")
+        user = client.find_followers_for("sm_debenedetto")
         expect(user).to be_a(Array) 
         expect(user.first.class).to eq(Twitter::User)
+        expect(user.first.name).to eq("Adeline Gross")
       end
     end
   end
@@ -40,6 +42,7 @@ describe TwitterApi do
         tweet = client.homepage_timeline
         expect(tweet).to be_a(Array) 
         expect(tweet.first.class).to eq(Twitter::Tweet)
+        expcect(tweet.first.id).to eq(629359789647265792)
       end
     end
   end
