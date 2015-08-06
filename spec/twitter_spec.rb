@@ -8,8 +8,8 @@ describe TwitterApi do
   describe "#most_recent_friend" do 
     it "returns the most recent friend" do
       VCR.use_cassette('twitter/most_recent_friend') do
-        response = client.most_recent_friend
-        expect(response.class).to eq(Twitter::User)
+        user = client.most_recent_friend
+        expect(user.class).to eq(Twitter::User)
       end
     end
   end
@@ -17,9 +17,9 @@ describe TwitterApi do
   describe "#find_user_for" do 
     it "given a username, it returns the user object" do 
       VCR.use_cassette('twitter/find_user_for') do
-        reponse = client.find_user_for("sm_debenedetto")
-        expect(reponse.class).to eq(Twitter::User)
-        expect(reponse.username).to eq("sm_debenedetto") 
+        user = client.find_user_for("USERNAME HERE")
+        expect(user.class).to eq(Twitter::User)
+        expect(user.username).to eq("USERNAME HERE") 
       end
     end
   end
@@ -27,9 +27,9 @@ describe TwitterApi do
   describe "#find_followers_for" do 
     it "given a username, it returns that user's followers" do 
       VCR.use_cassette('twitter/find_followers_for') do
-        response = client.find_followers_for("sm_debenedetto")
-        expect(response).to be_a(Array) 
-        expect(response.first.class).to eq(Twitter::User)
+        user = client.find_followers_for("USERNAME HERE")
+        expect(user).to be_a(Array) 
+        expect(user.first.class).to eq(Twitter::User)
       end
     end
   end
@@ -37,9 +37,9 @@ describe TwitterApi do
   describe "#homepage_timeline" do 
     it "returns an array of tweet objects from the client user's homepage" do 
       VCR.use_cassette('twitter/homepage_timeline') do
-        response = client.homepage_timeline
-        expect(response).to be_a(Array) 
-        expect(response.first.class).to eq(Twitter::Tweet)
+        tweet = client.homepage_timeline
+        expect(tweet).to be_a(Array) 
+        expect(tweet.first.class).to eq(Twitter::Tweet)
       end
     end
   end

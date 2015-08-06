@@ -24,7 +24,7 @@ In this lab, you'll be storing your API keys in an `application.yml` file. Once 
 *Make sure you `bundle install` from the terminal in the directory of this lab to get the necessary gems!*
 
 1. Let's get our API key! If you don't have a Twitter account, sign up for one first. Twitter, btw, is an important communication space for the tech community. You don't have to tweet about celebrities! You can follow your favorite developers and companies and learn about new technologies––not to mention share your own work and questions! Okay, now that we all have Twitter accounts, let's create a new application on Twitter to get our API keys. You can do that at [Twitter Apps](https://apps.twitter.com/). Navigate to the the `API Keys` section of your application page, and then generate the below access tokens from there.
-2. Now, we need to store our API keys and tokens in our application. Create an `application.yml` file in the root directory of this lab. Add your Twitter keys to that file: 
+2. Now, we need to store our API keys and tokens in our application. Create an `application.yml` file in the root directory of this lab. Add your Twitter keys to that file using the code below. You can check your YAML syntax [here](http://www.yamllint.com/).
 
 ```yaml
 ACCESS_TOKEN: your token!
@@ -33,7 +33,7 @@ CONSUMER_KEY: your consumer token!
 CONSUMER_SECRET: your consumer secret!
 ```
 
-3. Add your Twitter username (or any legit twitter handle) inside of the string on line 7 inside of `spec/twitter_spec.rb`.
+3. Add your Twitter username (or any legit twitter handle) inside of the strings on lines 20, 22 and 30 inside of `spec/twitter_spec.rb`.
 4. Now we're ready to fire up our Twitter gem. 
   * Notice that the gem is being required at the top of the `twitter.rb` file with the `require 'twitter'` line. 
   * Now that you have your API keys and tokens, the code below will handle your connection to the Twitter API via the client. The client handles the authentication aspect of requesting data from the API––it will make the appropriate request for us, depending on what data we want from the API, and, because it already contains our keys and secrets, it will authenticate us with the API. 
