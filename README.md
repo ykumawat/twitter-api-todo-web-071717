@@ -33,8 +33,7 @@ CONSUMER_KEY: your consumer token!
 CONSUMER_SECRET: your consumer secret!
 ```
 
-3. Add your Twitter username (or any legit twitter handle) inside of the strings on lines 20, 22, and 23 inside of `spec/twitter_spec.rb`.
-4. Now we're ready to fire up our Twitter gem. 
+3. Now we're ready to fire up our Twitter gem. 
   * Notice that the gem is being required at the top of the `twitter.rb` file with the `require 'twitter'` line. 
   * Now that you have your API keys and tokens, the code below will handle your connection to the Twitter API via the client. The client handles the authentication aspect of requesting data from the API––it will make the appropriate request for us, depending on what data we want from the API, and, because it already contains our keys and secrets, it will authenticate us with the API. 
   * Fill out the methods in the `twitter.rb` to use the approprate Twitter gem methods. The Twitter gem includes methods to handle common actions like finding a particular user's followers. 
@@ -51,9 +50,9 @@ CONSUMER_SECRET: your consumer secret!
   * According to the [documentation](https://github.com/sferik/twitter) for the Twitter gem, there is a method, `#friends`, that we can call on our configered client (stored in the `client` getter method). Thus, we can request a list of the client's friends from the Twitter API like this: 
 
   ```ruby
-  def get_friends
-    client.friends
-  end
+def get_friends
+   client.friends
+end
   ```
   * To get these tests passing, use the example above and the [documentation](https://github.com/sferik/twitter) for the Twitter gem, or refer to the [API docs](https://dev.twitter.com/docs/api/1.1) if its unclear what the Twitter gem commands are doing. This lab is test-driven, so use the spec file and the above resources to get the tests passing. This lab is designed to help you get comfortable navigating the documentation of an API gem. So, don't get frustrated if you don't know the gem methods you need to employ for each test. We haven't taught them to you! Instead, we are letting you know the desired *behavior*, and you are using the gem's documentation to help you find the right tools. 
 
@@ -61,7 +60,17 @@ CONSUMER_SECRET: your consumer secret!
 
 Let's actually play around with the data that we've been retrieving from Twitter!
 
-1. Un-comment out the lines on the bottom of the `twitter.rb` file. Then, run `ruby twitter.rb` in your terminal. You'll notice that the methods you've written are returning actual User or Tweet objects from the API. Let's get these objects to show us something useful. 
+**First, go to `spec/spec_helper.rb` and comment out the following line:**
+
+```ruby
+WebMock.disable_net_connect!(allow_localhost: true)
+```
+
+**Advanced:** The test suite uses a gem called WebMock to fake calls to the Twitter API. This allows you to run your test suite again and again without hitting the API rate limit and it allows us to test your code remotely without relying on your super-secret API keys, which will not be pushed up to git hub. In order for you to complete the bonus challenge and play around with real web requests to the Twitter API, we have to disable WebMock and re-enable your programs ability to make web requests. **You must add the above line back into `spec_helper` before you push up your code and open a PR. OTHERWISE YOUR CODE WILL NOT PASS THE REMOTE BUILD.** 
+
+* To learn more about how this particular test suite runs, you can check out the [VCR gem](https://github.com/vcr/vcr). 
+
+1. Un-comment out the lines on the bottom of the `twitter.rb` file. Add your own twitter username to the arguments of the appropriate methods. Then, run `ruby twitter.rb` in your terminal. You'll notice that the methods you've written are returning actual User or Tweet objects from the API. Let's get these objects to show us something useful. 
 
 2. The Twitter gem gives us a `.name` method that we can call on a user. Edit your first three methods (the ones that return User objects) to return the *name* of the users. 
 
@@ -69,6 +78,8 @@ Let's actually play around with the data that we've been retrieving from Twitter
 
 4. Run the file again. This time, you'll see actual user names and tweets output to your terminal. 
 
+You did it! Don't forget to un-comment out `WebMock.disable_net_connect!(allow_localhost: true)` in the `spec_helper.rb` file before pushing up your code!
+
 ## Resources
 * [Twitter](https://dev.twitter.com/)
-* Twitter Gem](https://github.com/sferik/twitter)
+* [Twitter Gem](https://github.com/sferik/twitter)
