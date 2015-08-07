@@ -42,7 +42,7 @@ describe TwitterApi do
         tweet = client.homepage_timeline
         expect(tweet).to be_a(Array) 
         expect(tweet.first.class).to eq(Twitter::Tweet)
-        expcect(tweet.first.id).to eq(629359789647265792)
+        expect(tweet.first.id).to eq(629359789647265792)
       end
     end
   end
