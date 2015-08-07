@@ -33,8 +33,6 @@ describe TwitterApi do
         expect(user.first.class).to eq(Twitter::User)
         expect(user.first.name).to eq("Adeline Gross")
       end
-    end
-  end
 
   describe "#homepage_timeline" do 
     it "returns an array of tweet objects from the client user's homepage" do 
