@@ -6,7 +6,6 @@ class TwitterApi
 
   def initialize
     keys = YAML.load_file('application.yml')
-
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = keys['CONSUMER_KEY']
       config.consumer_secret     = keys['CONSUMER_SECRET']
@@ -15,7 +14,8 @@ class TwitterApi
     end
   end
 
-  def most_recent_follower
+
+  def most_recent_friend
     client.friends.first
   end
 
@@ -26,4 +26,19 @@ class TwitterApi
   def find_followers_for(user)
     client.followers(user).take(10)
   end
+
+  def homepage_timeline
+    client.home_timeline
+  end
 end
+
+#Bonus: 
+
+# uncomment out the following and read the bonus instructions.
+# remember to comment out the WebMock line of your spec_helper, as the instructions dictate.
+
+# tweet_client = TwitterApi.new
+# puts tweet_client.most_recent_friend
+# puts tweet_client.find_user_for("USERNAME HERE")
+# puts tweet_client.find_followers_for("USERNAME HERE")
+# puts tweet_client.homepage_timeline

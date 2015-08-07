@@ -1,42 +1,50 @@
-require_relative 'spec_helper'
-require 'pry'
+ require_relative 'spec_helper'
+ require 'pry'
+ require 'vcr'
 
-describe TwitterApi do
-  let(:client) { TwitterApi.new }
-  # BE SURE TO ADD YOUR USERNAME INSIDE OF THE STRING BELOW!
-  let(:user) { "<USERNAME>" }
+describe TwitterApi do 
+  let(:client) {TwitterApi.new}
 
-  before(:all) do
-    encoded = "cmVxdWlyZSAndHdpdHRlcicKcmVxdWlyZSAneWFtbCcKCmNsYXNzIFNwZWNU\nd2l0dGVyQXBpCiAgYXR0cl9yZWFkZXIgOmNsaWVudAoKICBkZWYgaW5pdGlh\nbGl6ZQogICAga2V5cyA9IFlBTUwubG9hZF9maWxlKCdhcHBsaWNhdGlvbi55\nbWwnKQoKICAgIEBjbGllbnQgPSBUd2l0dGVyOjpSRVNUOjpDbGllbnQubmV3\nIGRvIHxjb25maWd8CiAgICAgIGNvbmZpZy5jb25zdW1lcl9rZXkgICAgICAg\nID0ga2V5c1snQ09OU1VNRVJfS0VZJ10KICAgICAgY29uZmlnLmNvbnN1bWVy\nX3NlY3JldCAgICAgPSBrZXlzWydDT05TVU1FUl9TRUNSRVQnXQogICAgICBj\nb25maWcuYWNjZXNzX3Rva2VuICAgICAgICA9IGtleXNbJ0FDQ0VTU19UT0tF\nTiddCiAgICAgIGNvbmZpZy5hY2Nlc3NfdG9rZW5fc2VjcmV0ID0ga2V5c1sn\nQUNDRVNTX1RPS0VOX1NFQ1JFVCddCiAgICBlbmQKICBlbmQKCiAgZGVmIG1v\nc3RfcmVjZW50X2ZvbGxvd2VyCiAgICBjbGllbnQuZnJpZW5kcy5maXJzdAog\nIGVuZAoKICBkZWYgZmluZF91c2VyX2Zvcih1c2VybmFtZSkKICAgIGNsaWVu\ndC51c2VyKHVzZXJuYW1lKQogIGVuZAoKICBkZWYgZmluZF9mb2xsb3dlcnNf\nZm9yKHVzZXIpCiAgICBjbGllbnQuZm9sbG93ZXJzKHVzZXIpLnRha2UoMTAp\nCiAgZW5kCmVuZAo=\n"
-    decoded = Base64.decode64(encoded)
-    File.open('./spec/spec_twitter_api.rb', 'w') do |file|
-      file.write(decoded)
-    end
-    require_relative './spec_twitter_api.rb'
-  end
-
-  after(:all) do
-    File.open('./spec/spec_twitter_api.rb', 'w') do |file|
-      file.truncate(0)
+  describe "#most_recent_friend" do 
+    it "returns the most recent friend" do
+      VCR.use_cassette('twitter/most_recent_friend') do
+        user = client.most_recent_friend
+        expect(user.class).to eq(Twitter::User)
+        expect(user.name).to eq("Forrest Chang")
+      end
     end
   end
 
-  describe '#most_recent_follower' do
-    # should use client.friends, not client.followers
-    it 'returns the most your most recent Twitter follower' do
-      expect(client.most_recent_follower).to eq(SpecTwitterApi.new.most_recent_follower)
+  describe "#find_user_for" do 
+    it "given a username, it returns the correct user object" do 
+      VCR.use_cassette('twitter/find_user_for') do
+        user = client.find_user_for("sm_debenedetto")
+        expect(user.class).to eq(Twitter::User)
+        expect(user.username).to eq("sm_debenedetto") 
+      end
     end
   end
 
-  describe "#find_user_for" do
-    it 'returns the Twitter user associated with username that you passed in as a parameter' do
-      expect( client.find_user_for(user) ).to eq( SpecTwitterApi.new.find_user_for(user) )
+  describe "#find_followers_for" do 
+    it "given a username, it returns that user's followers" do 
+      VCR.use_cassette('twitter/find_followers_for') do
+        user = client.find_followers_for("sm_debenedetto")
+        expect(user).to be_a(Array) 
+        expect(user.first.class).to eq(Twitter::User)
+        expect(user.first.name).to eq("Adeline Gross")
+      end
     end
   end
 
-  describe "#find_followers_for" do
-    it 'returns 10 followers for a specific Twitter user' do
-      expect( client.find_followers_for(user) ).to eq( SpecTwitterApi.new.find_followers_for(user) )
+  describe "#homepage_timeline" do 
+    it "returns an array of tweet objects from the client user's homepage" do 
+      VCR.use_cassette('twitter/homepage_timeline') do
+        tweet = client.homepage_timeline
+        expect(tweet).to be_a(Array) 
+        expect(tweet.first.class).to eq(Twitter::Tweet)
+        expect(tweet.first.id).to eq(629359789647265792)
+      end
     end
   end
 end
+
