@@ -26,10 +26,11 @@ describe TwitterApi do
   end
 
   describe "#find_followers_for" do
-    it "given a username, it returns that user's followers" do
+    it "given a username, it returns the first 10 followers for that user" do
       VCR.use_cassette('twitter/find_followers_for') do
         user = client.find_followers_for("sm_debenedetto")
         expect(user).to be_a(Array)
+        expect(user.count).to eq(10)
         expect(user.first.class).to eq(Twitter::User)
         expect(user.first.name).to eq("Adeline Gross")
       end
