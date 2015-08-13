@@ -30,9 +30,10 @@ class TwitterApi
   def homepage_timeline
     client.home_timeline
   end
+
 end
 
-#Bonus: 
+#Bonus:
 
 # uncomment out the following and read the bonus instructions.
 # remember to comment out the WebMock line of your spec_helper, as the instructions dictate.
