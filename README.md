@@ -9,11 +9,16 @@
 
 In this lab, we'll be working with the [Twitter API](https://dev.twitter.com/docs/api/1.1). In order to interact with this API, Twitter requires that we sign up for an API key.
 
-**_Note that the results of the test suite for this lab is based on the [VCR Fixtures](https://github.com/vcr/vcr) in `spec/vcr/twitter` _**
+**Note that the results of the test suite for this lab is based on the [VCR Fixtures](https://github.com/vcr/vcr) in `spec/vcr/twitter`**
 
 ### Working with Gems
 
 Many popular APIs, such as the Twitter API, are accompanied by Ruby gems! API gems provide libraries of code that "wrap" the functionality of the API. So, instead of having to write all of the code to request and manipulate API data, you can use a gem to do most of that work for you! In this lab, we'll be working with the [Twitter Gem](https://github.com/sferik/twitter)
+
+#### Gem Review: What is a Gem?
+
+A gem is a library of Ruby code that has been packaged specially for inclusion into any programmer's Ruby project. You can refer back to the earlier lessons on using bundler to refresh your memory. Here's a quick reminder though: bunlder is a tool that installs the gem's required by your program and helps to manager the dependencies of those gems. 
+
 
 ### Using the `application.yml` file
 
