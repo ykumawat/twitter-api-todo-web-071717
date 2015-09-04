@@ -9,11 +9,16 @@
 
 In this lab, we'll be working with the [Twitter API](https://dev.twitter.com/docs/api/1.1). In order to interact with this API, Twitter requires that we sign up for an API key.
 
-**_Note that the results of the test suite for this lab is based on the [VCR Fixtures](https://github.com/vcr/vcr) in `spec/vcr/twitter` _**
+**Note that the results of the test suite for this lab is based on the [VCR Fixtures](https://github.com/vcr/vcr) in `spec/vcr/twitter`**
 
 ### Working with Gems
 
 Many popular APIs, such as the Twitter API, are accompanied by Ruby gems! API gems provide libraries of code that "wrap" the functionality of the API. So, instead of having to write all of the code to request and manipulate API data, you can use a gem to do most of that work for you! In this lab, we'll be working with the [Twitter Gem](https://github.com/sferik/twitter)
+
+#### Gem Review: What is a Gem?
+
+A gem is a library of Ruby code that has been packaged specially for inclusion into any programmer's Ruby project. You can refer back to the earlier lessons on using bundler to refresh your memory. Here's a quick reminder though: bundler is a tool that installs the gem's required by your program and helps to manager the dependencies of those gems. 
+
 
 ### Using the `application.yml` file
 
@@ -39,7 +44,7 @@ CONSUMER_SECRET: your consumer secret!
   * Notice that the gem is being required at the top of the `twitter.rb` file with the `require 'twitter'` line.
   * Now that you have your API keys and tokens, the code below will handle your connection to the Twitter API via the client. The client handles the authentication aspect of requesting data from the API––it will make the appropriate request for us, depending on what data we want from the API, and, because it already contains our keys and secrets, it will authenticate us with the API.
   * Fill out the methods in the `twitter.rb` to use the approprate Twitter gem methods. The Twitter gem includes methods to handle common actions like finding a particular user's followers.
-  * Let's go through one example together: Now that you've configered your client, you'll notice that there is an `attr_accessor` method, `client`. Since, as we discussed, the client handles our authentication with the Twitter API, any subsequent Twitter gem methods will need to be called on `client`.
+  * Let's go through one example together: Now that you've configured your client, you'll notice that there is an `attr_accessor` method, `client`. Since, as we discussed, the client handles our authentication with the Twitter API, any subsequent Twitter gem methods will need to be called on `client`.
   * Let's take a look at the example method below:
 
   ```ruby
