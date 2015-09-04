@@ -17,7 +17,7 @@ Many popular APIs, such as the Twitter API, are accompanied by Ruby gems! API ge
 
 #### Gem Review: What is a Gem?
 
-A gem is a library of Ruby code that has been packaged specially for inclusion into any programmer's Ruby project. You can refer back to the earlier lessons on using bundler to refresh your memory. Here's a quick reminder though: bunlder is a tool that installs the gem's required by your program and helps to manager the dependencies of those gems. 
+A gem is a library of Ruby code that has been packaged specially for inclusion into any programmer's Ruby project. You can refer back to the earlier lessons on using bundler to refresh your memory. Here's a quick reminder though: bundler is a tool that installs the gem's required by your program and helps to manager the dependencies of those gems. 
 
 
 ### Using the `application.yml` file
