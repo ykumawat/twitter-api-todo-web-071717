@@ -19,6 +19,24 @@ Many popular APIs, such as the Twitter API, are accompanied by Ruby gems! API ge
 
 A gem is a library of Ruby code that has been packaged specially for inclusion into any programmer's Ruby project. You can refer back to the earlier lessons on using bundler to refresh your memory. Here's a quick reminder though: bundler is a tool that installs the gem's required by your program and helps to manager the dependencies of those gems. 
 
+### API Keys and Secrets
+
+Many APIs require authentication, just like signing in to Facebook or any other app requires you to sign up (the first time) and sign in. When you send an HTTP request to an API endpoint, or URL, you might send something like this:
+
+```
+http://www.exampleapi.com/get-me-the-data
+```
+The API might then wonder: "who the heck is this?". An API, just like a web application, might require some kind of authentication. This will occur through the use of API keys (also called tokens or secrets). You can sign up for a key (or keys) for a particular API. The API will then generate a super-secret key (or keys) for you that you include in your HTTP request to the API. For example, let's say you sign up for a key to use the Petfinder API because you're building an app that uses that API to deliver data about adoptable pets to your app's users. You sign up for an API key, and receive it. It might look something like this:
+
+```
+ZaSdkfj84987326V381NHDKl15Qle
+```
+Then, when you send a request to the Petfinder API, you might structure your URL like this:
+
+```
+http://www.petfinder.com/api/show-me-the-pets/ZaSdkfj84987326V381NHDKl15Qle
+```
+The manner in which you structure the request to the API will be different for every API. The documentation for the API will explain the correct structure. 
 
 ### Using the `application.yml` file
 
@@ -42,6 +60,7 @@ CONSUMER_SECRET: your consumer secret!
 
 3. Now we're ready to fire up our Twitter gem.
   * Notice that the gem is being required at the top of the `twitter.rb` file with the `require 'twitter'` line.
+  * Notice the first line of your `#initialize` method handles loading the `application.yml` file and setting it's contents equal to a `keys` variable. Now, you can access those keys as if they were a hash.
   * Now that you have your API keys and tokens, the code below will handle your connection to the Twitter API via the client. The client handles the authentication aspect of requesting data from the API––it will make the appropriate request for us, depending on what data we want from the API, and, because it already contains our keys and secrets, it will authenticate us with the API.
   * Fill out the methods in the `twitter.rb` to use the approprate Twitter gem methods. The Twitter gem includes methods to handle common actions like finding a particular user's followers.
   * Let's go through one example together: Now that you've configured your client, you'll notice that there is an `attr_accessor` method, `client`. Since, as we discussed, the client handles our authentication with the Twitter API, any subsequent Twitter gem methods will need to be called on `client`.
