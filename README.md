@@ -48,8 +48,16 @@ In this lab, you'll be storing your API keys in an `application.yml` file. Once 
 
 *Make sure you `bundle install` from the terminal in the directory of this lab to get the necessary gems!*
 
-1. Let's get our API key! If you don't have a Twitter account, sign up for one first. Twitter, btw, is an important communication space for the tech community. You don't have to tweet about celebrities! You can follow your favorite developers and companies and learn about new technologies––not to mention share your own work and questions! Okay, now that we all have Twitter accounts, let's create a new application on Twitter to get our API keys. You can do that at [Twitter Apps](https://apps.twitter.com/). Navigate to the the `API Keys` section of your application page, and then generate the below access tokens from there.
-2. Now, we need to store our API keys and tokens in our application. Create an `application.yml` file in the root directory of this lab. Add your Twitter keys to that file using the code below. You can check your YAML syntax [here](http://www.yamllint.com/).
+1 . Let's get our API key! If you don't have a Twitter account, sign up for one first. Twitter, btw, is an important communication space for the tech community. You don't have to tweet about celebrities! You can follow your favorite developers and companies and learn about new technologies––not to mention share your own work and questions! Okay, now that we all have Twitter accounts, let's create a new application on Twitter to get our API keys. You can do that at [Twitter Apps](https://apps.twitter.com/). Navigate to the the `API Keys` section of your application page, and, scroll down and click the "generate access token" button to get your consumer token, consumer secret, access token and access token secret. **Important:** If the Twitter API gives you an error when you try to generate your access token and access secret, you can use the following fake tokens for the purpose of the test suite. If you have to use fake tokens, note that you will be unable to complete the bonus section of this lab. 
+
+Fake tokens:
+
+```
+Access Token	2911734821-De0YvYvGf1XeyBZ4BAcEDDMt17YhF62HaI8jZZZ
+Access Token Secret	zzzrkoJEkZnWtoP2DfHmodmJ2AXk3LMZrlBssKw028ZZZ
+```
+
+2 . Now, we need to store our API keys and tokens in our application. Create an `application.yml` file in the root directory of this lab. Add your Twitter keys to that file using the code below. You can check your YAML syntax [here](http://www.yamllint.com/). Note that *you must have something filled out for each of the four types of API keys below*.
 
 ```yaml
 ACCESS_TOKEN: your token!
