@@ -117,3 +117,5 @@ You did it! Don't forget to un-comment out `WebMock.disable_net_connect!(allow_l
 ## Resources
 * [Twitter](https://dev.twitter.com/)
 * [Twitter Gem](https://github.com/sferik/twitter)
+
+<a href='https://learn.co/lessons/twitter-api-todo' data-visibility='hidden'>View this lesson on Learn.co</a>
