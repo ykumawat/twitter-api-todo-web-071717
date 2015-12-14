@@ -17,7 +17,7 @@ Many popular APIs, such as the Twitter API, are accompanied by Ruby gems! API ge
 
 #### Gem Review: What is a Gem?
 
-A gem is a library of Ruby code that has been packaged specially for inclusion into any programmer's Ruby project. You can refer back to the earlier lessons on using bundler to refresh your memory. Here's a quick reminder though: bundler is a tool that installs the gem's required by your program and helps to manager the dependencies of those gems. 
+A gem is a library of Ruby code that has been packaged specially for inclusion into any programmer's Ruby project. You can refer back to the earlier lessons on using bundler to refresh your memory. Here's a quick reminder though: bundler is a tool that installs the gems required by your program and helps to manage the dependencies of those gems. 
 
 ### API Keys and Secrets
 
@@ -26,7 +26,7 @@ Many APIs require authentication, just like signing in to Facebook or any other 
 ```
 http://www.exampleapi.com/get-me-the-data
 ```
-The API might then wonder: "who the heck is this?". An API, just like a web application, might require some kind of authentication. This will occur through the use of API keys (also called tokens or secrets). You can sign up for a key (or keys) for a particular API. The API will then generate a super-secret key (or keys) for you that you include in your HTTP request to the API. For example, let's say you sign up for a key to use the Petfinder API because you're building an app that uses that API to deliver data about adoptable pets to your app's users. You sign up for an API key, and receive it. It might look something like this:
+The API might then wonder: "who the heck is this?". An API, just like a web application, might require some kind of authentication. This will occur through the use of API keys (also called tokens or secrets). You can sign up for a key (or keys) for a particular API. The API will then generate a super-secret key (or keys) that you include in your HTTP request to the API. For example, let's say you sign up for a key to use the Petfinder API because you're building an app that uses that API to deliver data about adoptable pets to your app's users. You sign up for an API key and receive it. It might look something like this:
 
 ```
 ZaSdkfj84987326V381NHDKl15Qle
@@ -68,7 +68,7 @@ CONSUMER_SECRET: your consumer secret!
 
 3. Now we're ready to fire up our Twitter gem.
   * Notice that the gem is being required at the top of the `twitter.rb` file with the `require 'twitter'` line.
-  * Notice the first line of your `#initialize` method handles loading the `application.yml` file and setting it's contents equal to a `keys` variable. Now, you can access those keys as if they were a hash.
+  * Notice the first line of your `#initialize` method handles loading the `application.yml` file and setting its contents equal to a `keys` variable. Now, you can access those keys as if they were a hash.
   * Now that you have your API keys and tokens, the code below will handle your connection to the Twitter API via the client. The client handles the authentication aspect of requesting data from the API––it will make the appropriate request for us, depending on what data we want from the API, and, because it already contains our keys and secrets, it will authenticate us with the API.
   * Fill out the methods in the `twitter.rb` to use the approprate Twitter gem methods. The Twitter gem includes methods to handle common actions like finding a particular user's followers.
   * Let's go through one example together: Now that you've configured your client, you'll notice that there is an `attr_accessor` method, `client`. Since, as we discussed, the client handles our authentication with the Twitter API, any subsequent Twitter gem methods will need to be called on `client`.
@@ -88,7 +88,7 @@ def get_friends
    client.friends
 end
   ```
-  * To get these tests passing, use the example above and the [documentation](https://github.com/sferik/twitter) for the Twitter gem, or refer to the [API docs](https://dev.twitter.com/docs/api/1.1) if its unclear what the Twitter gem commands are doing. If you're stuck, be sure to look at the additional documentation [located here](http://www.rubydoc.info/list/gems/twitter/method), which details all the methods that are at your disposal. This lab is test-driven, so use the spec file and the above resources to get the tests passing. This lab is designed to help you get comfortable navigating the documentation of an API gem. So, don't get frustrated if you don't know the gem methods you need to employ for each test. We haven't taught them to you! Instead, we are letting you know the desired *behavior*, and you are using the gem's documentation to help you find the right tools.
+  * To get these tests passing, use the example above and the [documentation](https://github.com/sferik/twitter) for the Twitter gem, or refer to the [API docs](https://dev.twitter.com/docs/api/1.1) if it's unclear what the Twitter gem commands are doing. If you're stuck, be sure to look at the additional documentation [located here](http://www.rubydoc.info/list/gems/twitter/method), which details all the methods that are at your disposal. This lab is test-driven, so use the spec file and the above resources to get the tests passing. This lab is designed to help you get comfortable navigating the documentation of an API gem. So, don't get frustrated if you don't know the gem methods you need to employ for each test. We haven't taught them to you! Instead, we are letting you know the desired *behavior*, and you are using the gem's documentation to help you find the right tools.
 
 ### Bonus
 
@@ -104,7 +104,7 @@ WebMock.disable_net_connect!(allow_localhost: true)
 
 * To learn more about how this particular test suite runs, you can check out the [VCR gem](https://github.com/vcr/vcr).
 
-1. Un-comment out the lines on the bottom of the `twitter.rb` file. Add your own twitter username to the arguments of the appropriate methods. Then, run `ruby twitter.rb` in your terminal. You'll notice that the methods you've written are returning actual User or Tweet objects from the API. Let's get these objects to show us something useful.
+1. Un-comment out the lines on the bottom of the `twitter.rb` file. Add your own Twitter username to the arguments of the appropriate methods. Then, run `ruby twitter.rb` in your terminal. You'll notice that the methods you've written are returning actual User or Tweet objects from the API. Let's get these objects to show us something useful.
 
 2. The Twitter gem gives us a `.name` method that we can call on a user. Edit your first three methods (the ones that return User objects) to return the *name* of the users.
 
