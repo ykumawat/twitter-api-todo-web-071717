@@ -40,7 +40,7 @@ The manner in which you structure the request to the API will be different for e
 
 ### Using the `application.yml` file
 
-In this lab, you'll be storing your API keys in an `application.yml` file. Once we learn about developing applications for the web, you'll get into the habit of storing data that should be available across your applications files in environment variables in YAML files. Another benefit of storing data like API keys and secrets in a separate file is to protect them from scary internet users. If we keep our keys in a separate file and add that file to our `.gitignore` file, that file *won't be pushed up to Github* and our secret keys and passwords will be safe from hackers!
+In this lab, you'll be storing your API keys in an `application.yml` file. Once we learn about developing applications for the web, you'll get into the habit of storing data that should be available across your application's files in environment variables in YAML files. Another benefit of storing data like API keys and secrets in a separate file is to protect them from scary internet users. If we keep our keys in a separate file and add that file to our `.gitignore` file, that file *won't be pushed up to Github* and our secret keys and passwords will be safe from hackers!
 
 **Top Tip:** A **`.gitignore`* file is a manifest of files that you don't want to push up to Github. To prevent certain files from being pushed up to Github, simply add them to a `.gitignore` file.
 
